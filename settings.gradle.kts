@@ -13,5 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "2023-android-itmo-hws"
-include ':app'
+rootProject.name = "HW5"
+include(":app")
+ 
