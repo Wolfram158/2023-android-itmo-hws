@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Homework</string>
+    <string name="editTextPassword">Password</string>
+    <string name="Логин">Login</string>
+    <string name="button_password">Log in</string>
+    <string name="password">Password</string>
+    <string name="pswEmpty">Password field is empty</string>
+    <string name="pswInvalid">Password field is invalid</string>
+    <string name="loginEmpty">Login field is empty</string>
+    <string name="loginInvalid">Login field is invalid</string>
+</resources>

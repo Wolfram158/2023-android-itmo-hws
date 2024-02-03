@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Homework</string>
+    <string name="editTextPassword">كلمة المرور</string>
+    <string name="Логин">تسجيل الدخول</string>
+    <string name="button_password">ليأتي</string>
+    <string name="password">كلمة المرور</string>
+    <string name="pswEmpty">حقل كلمة المرور فارغ</string>
+    <string name="pswInvalid">حقل كلمة المرور غير صالح</string>
+    <string name="loginEmpty">حقل تسجيل الدخول فارغ</string>
+    <string name="loginInvalid">حقل تسجيل الدخول غير صالح</string>
+</resources>
