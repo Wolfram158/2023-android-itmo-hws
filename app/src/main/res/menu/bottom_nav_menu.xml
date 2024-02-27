@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/A"
+        android:icon="@android:drawable/alert_dark_frame"
+        android:title="A" />
+    <item
+        android:id="@+id/B"
+        android:icon="@android:drawable/alert_dark_frame"
+        android:title="B" />
+    <item
+        android:id="@+id/C"
+        android:icon="@android:drawable/alert_dark_frame"
+        android:title="C" />
+    <item
+        android:id="@+id/D"
+        android:icon="@android:drawable/alert_dark_frame"
+        android:title="D" />
+    <item
+        android:id="@+id/E"
+        android:icon="@android:drawable/alert_dark_frame"
+        android:title="E" />
+</menu>
