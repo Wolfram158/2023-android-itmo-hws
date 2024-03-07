@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.ok.itmo.ExampleUnitTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-02-11T08:07:15" hostname="LAPTOP-35DVSTKJ" time="0.004">
-  <properties/>
-  <testcase name="isCorrect" classname="ru.ok.itmo.ExampleUnitTest" time="0.004"/>
-  <testcase name="addition_isCorrect" classname="ru.ok.itmo.ExampleUnitTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
