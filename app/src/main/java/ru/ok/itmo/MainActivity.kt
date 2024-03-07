@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val bar: ProgressBar = findViewById(R.id.progressBar2)
         val buttonStart: Button = findViewById(R.id.button)
         val buttonRestart: Button = findViewById(R.id.button2)
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             radioButton500.isChecked = false
         }
 
-        fun onClickHelper(radioButton: RadioButton, t : Long) {
+        fun onClickHelper(radioButton: RadioButton, t: Long) {
             setUnchecked()
             radioButton.isChecked = true
             time = t
@@ -59,41 +60,49 @@ class MainActivity : AppCompatActivity() {
             onClickHelper(radioButton500, 500)
         }
 
-        buttonStart.setOnClickListener {
-            Thread {
-                while (progressBar < 100) {
-                    progressBar++
-                    Thread.sleep(time)
-                    handler.post {
-                        bar.progress = progressBar
-                    }
-                }
-            }.start()
-        }
-
         buttonRestart.setOnClickListener {
             Thread {
                 if (progressBar == 100) {
                     progressBar = 0
                 }
+                handler.post {
+                    bar.progress = progressBar
+                }
             }.start()
-            handler.post {
-                bar.progress = progressBar
+        }
+
+        fun thread() {
+            buttonStart.setOnClickListener {
+                Thread {
+                    while (progressBar < 100) {
+                        progressBar++
+                        Thread.sleep(time)
+                        handler.post {
+                            bar.progress = progressBar
+                        }
+                        bar.progress = progressBar
+                    }
+                }.start()
             }
         }
 
-        /*buttonStart.setOnClickListener {
-            Observable.create { emitter: ObservableEmitter<Int> ->
-                for (i in 0..100) {
-                    Thread.sleep(100)
-                    emitter.onNext(i)
+        fun rxJava() {
+            buttonStart.setOnClickListener {
+                Observable.create { emitter: ObservableEmitter<Int> ->
+                    for (i in 0..100) {
+                        Thread.sleep(100)
+                        emitter.onNext(i)
+                    }
+                    emitter.onComplete()
                 }
-                emitter.onComplete()
+                    .subscribeOn(Schedulers.io())
+                    .subscribe { progress ->
+                        bar.progress = progress
+                    }
             }
-                .subscribeOn(Schedulers.io())
-                .subscribe { progress ->
-                    bar.progress = progress
-                }
-        }*/
+        }
+
+        thread()
     }
+
 }
