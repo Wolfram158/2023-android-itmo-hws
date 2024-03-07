@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "ru.ok.itmo.app-mergeDebugResources-3:/layout/fragment_channel.xml",
+        "source": "ru.ok.itmo.app-main-6:/layout/fragment_channel.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\item_message_layout.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\item_message_layout.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\activity_main.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\fragment_image.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\fragment_image.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\fragment_message_sender.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\fragment_message_sender.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\fragment_authorization.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\fragment_authorization.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\fragment_chats.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\fragment_chats.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\item_channel_layout.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\item_channel_layout.xml"
+    },
+    {
+        "merged": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-mergeDebugResources-3:\\layout\\fragment_channel.xml",
+        "source": "C:\\gradle-8.5\\daemon\\8.2\\ru.ok.itmo.app-main-6:\\layout\\fragment_channel.xml"
+    }
+]
