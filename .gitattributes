@@ -1,4 +1,0 @@
-* text eol lf
-
-# batch
-*.bat text eol=crlf
