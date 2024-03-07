@@ -1,16 +1,3 @@
 <resources>
-    <string name="app_name">Homework</string>
-    <string name="editTextPassword">Пароль</string>
-    <string name="Логин">Логин</string>
-    <string name="button_password">Вход</string>
-    <string name="password">Пароль</string>
-    <string name="pswEmpty">Password field is empty</string>
-    <string name="pswInvalid">Password field is invalid</string>
-    <string name="loginEmpty">Login field is empty</string>
-    <string name="loginInvalid">Login field is invalid</string>
-    <string-array name="choice">
-        <item>RU</item>
-        <item>EN</item>
-        <item>AR</item>
-    </string-array>
+    <string name="app_name">HW2</string>
 </resources>
