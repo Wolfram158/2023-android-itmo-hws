@@ -7,10 +7,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlin.random.Random
+import kotlin.properties.Delegates
 
 class FragmentActivity : FragmentActivity(R.layout.fragment_) {
-    private val fragments = mutableListOf<String>()
+    private var fragments = mutableListOf<String>()
     private val idToTag = mutableMapOf(R.id.A to "A", R.id.B to "B",
         R.id.C to "C", R.id.D to "D", R.id.E to "E")
     private val tagToId = mutableMapOf("A" to R.id.A, "B" to R.id.B,
@@ -21,20 +21,45 @@ class FragmentActivity : FragmentActivity(R.layout.fragment_) {
     private lateinit var fragmentC: FragmentSample
     private lateinit var fragmentD: FragmentSample
     private lateinit var fragmentE: FragmentSample
+    private var count by Delegates.notNull<Int>()
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var last: FragmentSample
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        fragmentA = FragmentSample.newInstance("A")
-        fragmentB = FragmentSample.newInstance("B")
-        fragmentC = FragmentSample.newInstance("C")
-        fragmentD = FragmentSample.newInstance("D")
-        fragmentE = FragmentSample.newInstance("E")
+        Log.e("FragmentActivity", "onCreate")
 
-        val count: Int = (3..5).random()
+        if (savedInstanceState == null) {
+            fragmentA = FragmentSample.newInstance()
+            fragmentB = FragmentSample.newInstance()
+            fragmentC = FragmentSample.newInstance()
+            fragmentD = FragmentSample.newInstance()
+            fragmentE = FragmentSample.newInstance()
+            count = (3..5).random()
+            fragments.add("A")
+            last = fragmentA
+            supportFragmentManager.beginTransaction().add(R.id.frame_layout, fragmentA, "A").commit()
+        } else {
+            fragmentA = Fragments.a
+            fragmentB = Fragments.b
+            fragmentC = Fragments.c
+            fragmentD = Fragments.d
+            fragmentE = Fragments.e
+            last = Fragments.last
+            fragments = Fragments.fragments
+            Log.e(fragments.size.toString(), fragments.size.toString())
+            for (fragment in fragments) {
+                supportFragmentManager.beginTransaction().addToBackStack(fragment).commit()
+            }
+            count = Fragments.count
+        }
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setOnItemSelectedListener {
+            listener(idToTag[it.itemId])
+            true
+        }
 
         if (count < 5) {
             bottomNavigationView.menu.removeItem(R.id.E)
@@ -44,19 +69,19 @@ class FragmentActivity : FragmentActivity(R.layout.fragment_) {
             bottomNavigationView.menu.removeItem(R.id.D)
         }
 
-        bottomNavigationView.setOnItemSelectedListener {
-            listener(idToTag[it.itemId])
-            true
-        }
-
-        fragments.add("A")
-        last = fragmentA
-
         itemToFragment = mutableMapOf("A" to fragmentA, "B" to fragmentB, "C" to fragmentC, "D" to fragmentD,
             "E" to fragmentE)
 
-        supportFragmentManager.beginTransaction().add(R.id.frame_layout, fragmentA, "A").commit()
-
+        onBackPressed(true) {
+            if (fragments.size > 1) {
+                supportFragmentManager.popBackStack()
+                fragments.removeLast()
+                bottomNavigationView.selectedItemId = tagToId[fragments.last()]!!
+                last = itemToFragment[fragments.last()] as FragmentSample
+            } else {
+                finish()
+            }
+        }
     }
 
     private fun listener(item: String?) {
@@ -75,18 +100,9 @@ class FragmentActivity : FragmentActivity(R.layout.fragment_) {
                 fragments.removeLast()
             }
         }
+
         last = itemToFragment[item] as FragmentSample
 
-        onBackPressed(true) {
-            if (fragments.size > 1) {
-                supportFragmentManager.popBackStack()
-                fragments.removeLast()
-                bottomNavigationView.selectedItemId = tagToId[fragments.last()]!!
-                last = itemToFragment[fragments.last()] as FragmentSample
-            } else {
-                finish()
-            }
-        }
     }
 
     private fun onBackPressed(isEnabled: Boolean, callback: () -> Unit) {
@@ -97,4 +113,18 @@ class FragmentActivity : FragmentActivity(R.layout.fragment_) {
                 }
             })
     }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        Fragments.last = last
+        Fragments.fragments = fragments
+        Log.e("onSaveInstanceState", fragments.size.toString())
+        Fragments.a = fragmentA
+        Fragments.b = fragmentB
+        Fragments.c = fragmentC
+        Fragments.d = fragmentD
+        Fragments.e = fragmentE
+        Fragments.count = count
+    }
+
 }
